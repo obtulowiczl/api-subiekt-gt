@@ -33,10 +33,10 @@ class Order extends SubiektObj {
 
 
 
-	public function __construct($subiektGt,$orderDetail = array()){
-		parent::__construct($subiektGt, $orderDetail);
-		$this->excludeAttr(array('orderGt','orderDetail','pay_type','create_product_if_not_exists'));
+	public function __construct($subiektGt, $subiektPrinter, $orderDetail = array()){
 
+		parent::__construct($subiektGt, $subiektPrinter,  $orderDetail);
+		$this->excludeAttr(array('orderGt','orderDetail','pay_type','create_product_if_not_exists'));
 
 		if($this->order_ref !='' && $subiektGt->SuDokumentyManager->Istnieje($this->order_ref)){
 			$this->orderGt = $subiektGt->SuDokumentyManager->Wczytaj($this->order_ref);
@@ -252,6 +252,8 @@ class Order extends SubiektObj {
 
 
 	public function add(){	
+		$this->subiektGt->Okno->Widoczne = true;
+		return;
 		$this->customer = isset($this->orderDetail['customer'])?$this->orderDetail['customer']:false;
 		if(!$this->customer){
 			throw new Exception('Brak danych "customer" dla zamówienia!',1);

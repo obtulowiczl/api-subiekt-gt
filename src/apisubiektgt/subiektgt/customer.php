@@ -25,8 +25,8 @@ class Customer extends SubiektObj{
 	
 
 
-	public function __construct($subiektGt,$customerDetail = array()){						
-		parent::__construct($subiektGt, $customerDetail);
+	public function __construct($subiektGt, $subiektPrinter, $customerDetail = array()){
+		parent::__construct($subiektGt, $subiektPrinter, $customerDetail);
 		$this->excludeAttr('customerGt');
 
 		// NIP-e spacji "- "	

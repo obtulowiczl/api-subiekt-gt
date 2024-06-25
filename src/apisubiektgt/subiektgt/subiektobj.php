@@ -9,12 +9,13 @@ use APISubiektGT\MSSql;
 abstract class SubiektObj{
 
 	protected $subiektGt = false;
+	protected $subiektPrinter = false;
 	protected $is_exists = false;
 	protected $gt_id = false;
 	protected $cfg = false;
 	protected $id_user = 1;
 	protected $objDetail = false;
-	protected $exclude_attibs = array('subiektGt',
+	protected $exclude_attibs = array('subiektGt','subiektPrinter',
 							'exclude_attibs','cfg','doc_types'
 							);
 		
@@ -37,9 +38,10 @@ abstract class SubiektObj{
 						62=>'FM',
 						);	
 
-	public function __construct($subiektGt, $objDetail = array()){
+	public function __construct($subiektGt, $subiektPrinter, $objDetail = array()){
 		$this->readData($objDetail);
-		$this->subiektGt = $subiektGt;		
+		$this->subiektGt = $subiektGt;
+        $this->subiektPrinter = $subiektPrinter;
 	}
 	
 	protected function readData($objDetail){
@@ -101,4 +103,3 @@ abstract class SubiektObj{
 	}
 	
 }
-?>

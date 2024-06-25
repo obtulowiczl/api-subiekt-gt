@@ -31,8 +31,8 @@ class Document extends SubiektObj {
 	protected $flag_comment = '';
 	
 
-	public function __construct($subiektGt,$documentDetail = array()){
-		parent::__construct($subiektGt, $documentDetail);
+	public function __construct($subiektGt, $subiektPrinter, $documentDetail = array()){
+		parent::__construct($subiektGt, $subiektPrinter, $documentDetail);
 		$this->excludeAttr(array('documentGt','documentDetail','doc_types'));				
 		if($this->doc_ref!='' && $subiektGt->SuDokumentyManager->Istnieje($this->doc_ref)){
 			$this->documentGt = $subiektGt->SuDokumentyManager->Wczytaj($this->doc_ref);			
@@ -70,6 +70,7 @@ class Document extends SubiektObj {
 	}
 
 
+	
 	public function getState(){
 		return array('doc_ref'=>$this->doc_ref,
 				 'is_exists' => $this->is_exists,
@@ -85,7 +86,7 @@ class Document extends SubiektObj {
 				);
 	}
 
-	protected function getGtObject(){	
+	protected function getGtObject(){
 		if(!$this->documentGt){
 			return false;
 		}	

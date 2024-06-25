@@ -33,8 +33,8 @@ class Product extends SubiektObj{
 	protected $group_id = '';
 	protected $off_prefix = 0;
 
-	public function __construct($subiektGt,$productDetail = array()){		
-		parent::__construct($subiektGt, $productDetail);
+	public function __construct($subiektGt, $subiektPrinter, $productDetail = array()){
+		parent::__construct($subiektGt, $subiektPrinter,  $productDetail);
 		$this->excludeAttr(array('productGt','off_prefix','is_exists','objDetail'));
 		
 		if($this->code!='' &&  $subiektGt->Towary->Istnieje($this->code)){
